@@ -1,0 +1,43 @@
+<div id="bank-account" class="bank-payment-check">
+  <div id="bank-account-panel" class="bank-payment__panel">
+      <form [formGroup]="bankAccountForm" (ngSubmit)="saveBankAccount()" novalidate autocomplete="off">
+          <fieldset id="bank-account-name" class="bank-payment__form-block">
+              <label id="bank-account-name-label" for="account-name">Account Name</label>
+              <input id="account-name" type="text" formControlName="accountHolderName" 
+                  aglNameMask [class.invalid]="bankAccountForm.controls.accountHolderName.touched && !bankAccountForm.controls.accountHolderName.valid"
+                  maxLength="90" />
+              <div id="bank-account-name-warning" class="bank-payment__form-block--warning" *ngIf="bankAccountForm.controls.accountHolderName.touched && !bankAccountForm.controls.accountHolderName.valid">Please enter a valid Account Name</div>
+          </fieldset>
+          <fieldset id="bank-account-bsb" class="bank-payment__form-block">
+              <label id="bank-account-bsb-label">BSB</label><br />
+              <input id="bsb" class="bank-account__form--small" type="tel" formControlName="bsb" maxLength="7" 
+                  [class.invalid]="bankAccountForm.controls.bsb.touched && !bankAccountForm.controls.bsb.valid" appBsbMask
+              />
+              <div id="bank-account-bsb-required" class="bank-payment__form-block--warning" *ngIf="bankAccountForm.controls.bsb.touched && !bankAccountForm.controls.bsb.valid">Please enter a valid BSB number</div>
+          </fieldset>
+          <fieldset id="bank-account-number" class="bank-payment__form-block">
+              <label id="bank-account-number-label">Account Number</label>
+              <input id="account-number" formControlName="accountNumber" 
+                  [class.invalid]="bankAccountForm.controls.accountNumber.touched && !bankAccountForm.controls.accountNumber.valid"
+                  maxlength="9" pattern="\d*" autocomplete="off" type="tel"/>
+              <div id="bank-account-number-warning" class="bank-payment__form-block--warning" *ngIf="bankAccountForm.controls.accountNumber.touched && !bankAccountForm.controls.accountNumber.valid">Please enter a valid Account Number</div>
+          </fieldset>
+          <fieldset id="bank-payment-amount" class="bank-payment__form-block">
+            <label id="bank-payment-amount-label">Payment Amount ($)</label>
+            <input id="payment-amount" formControlName="paymentAmount" 
+                [class.invalid]="bankAccountForm.controls.paymentAmount.touched && !bankAccountForm.controls.paymentAmount.valid"
+                 pattern="[0-9]+([\.,][0-9]+)?" autocomplete="off" type="tel"/>
+            <div id="bank-payment-amount-warning" class="bank-payment__form-block--warning" *ngIf="bankAccountForm.controls.paymentAmount.touched && !bankAccountForm.controls.paymentAmount.valid">Please enter a valid amount</div>
+        </fieldset>
+          <div id="bank-terms" class="bank-payment__panel__check">
+              <input id="terms-conditions-check-bank" formControlName="terms" type="checkbox">
+              <label id="terms-conditions-bank-label" for="terms-conditions-check-bank" > I confirm that I have read and agree to the Details given</label>
+          </div>
+          <button [disabled]="!bankAccountForm.valid" type="submit">Submit</button>
+          <fieldset id="bank-payment-result" class="bank-payment__form-block" *ngIf = "isCallDone">
+              <div class="bank-payment__form-block--success" *ngIf = "success"> Payment is Receieved Successfully</div>
+              <div class="bank-payment__form-block--warning" *ngIf = "!success"> Payment is failed</div>
+         </fieldset>
+        </form>
+  </div>
+</div>

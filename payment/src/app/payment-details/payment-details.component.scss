@@ -1,0 +1,88 @@
+.bank-payment {
+  background-color: black;
+  &__panel {
+    margin-top: 30px;
+    font-size: 16px;
+    width: 400px;
+    font-family: 'Titillium Web', sans-serif;
+    &__bsb {
+      width: 182px !important;
+    }
+    &__save-button {
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      height: 50px;
+      background-color: #ffe344;
+      text-align: center;
+      min-width: 88px;
+      line-height: 36px;
+      padding: 0 16px;
+      border-radius: 2px;
+      border: none;
+      -webkit-tap-highlight-color: transparent;
+      margin-left: 11px;
+    }
+    button:disabled,
+    button[disabled] {
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+    &__check {
+      white-space: nowrap;
+      input {
+        margin-left: 11px;
+      }
+    }
+  }
+  &__form-block {
+    border: none;
+    font-size: 16px;
+    input {
+      padding: 10px;
+      width: 100%;
+      margin-top: 6px;
+      height: 30px;
+      border: solid 1px #999;
+      border-radius: 4px;
+    }
+    label {
+      display: inline-block;
+      max-width: 100%;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    &--small {
+      max-width: 182px;
+    }
+    .invalid {
+      border: 1px solid #FD334C;
+      color: #FD334C;
+    }
+    &--warning {
+      background-color:lighten(#FD334C, 38%);
+      background-image: url('../../assets/alert_error.svg');
+      height: 39px;
+      background-repeat: no-repeat;
+      background-position-x: 10px;
+      background-position-y: 14px;
+      padding: 11px 0px 0px 42px;
+      margin-right: -23px;
+      margin-top: 13px;
+    }
+    &--success {
+      background-color: #DFF2BF;
+      background-image: url('../../assets/alert_success.svg');
+      height: 39px;
+      background-repeat: no-repeat;
+      background-position-x: 10px;
+      background-position-y: 14px;
+      padding: 11px 0px 0px 42px;
+      margin-right: -23px;
+      margin-top: 13px;
+    }
+  }
+}
